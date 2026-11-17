@@ -13,12 +13,14 @@
 
 需要 Node.js 18 以上。
 
+下载后切换到你电脑里游戏文件的路径，执行`npm start`
+
 ```bash
 npm install
 npm start
 ```
 
-然后打开 http://localhost:5173 。
+然后打开 http://localhost:5173 即可。
 
 ## 操作
 

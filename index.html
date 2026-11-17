@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>玄圃号 · 舰桥终端</title>
+<link rel="stylesheet" href="./style.css">
+<script type="importmap">
+{ "imports": { "three": "./node_modules/three/build/three.module.js", "three/addons/": "./node_modules/three/examples/jsm/" } }
+</script>
+</head>
+<body>
+<canvas id="gl"></canvas>
+
+<div id="hud" class="hud pre">
+  <div class="scrim"></div>
+
+  <div class="fr">
+    <i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i>
+    <div class="side-l">FARSHORE SURVEY BUREAU<b>//</b>BRIDGE TERMINAL<b>//</b>BUILD 4.2.117</div>
+    <div class="side-r"><span>N 44°12′</span><i></i><span>E 118°07′</span></div>
+  </div>
+
+  <header class="top">
+    <div class="ident">
+      <div class="mark">
+        <svg viewBox="-50 -50 100 100" aria-hidden="true">
+          <circle r="41" fill="none" stroke="currentColor" stroke-width="8.5" stroke-dasharray="72.77 13.1" transform="rotate(-80.8)"/>
+          <rect x="-4.5" y="-25" width="9" height="50" fill="currentColor" transform="rotate(-45)"/>
+          <circle cx="18" cy="-18" r="6.5" class="mark-dot"/>
+        </svg>
+      </div>
+      <div class="ident-t">
+        <div class="ident-1"><b>玄圃号</b><em>XUANPU-07</em></div>
+        <div class="ident-2">远岸勘测局 · 深空测绘舰<span>FARSHORE SURVEY / DEEP-RANGE VESSEL</span></div>
+      </div>
+    </div>
+
+    <div class="crumb">
+      <span class="crumb-k">LOC</span>
+      <span>DECK 03</span><i></i><span>舰桥 BRIDGE</span><i></i><span id="crumbView" class="hot">总览</span>
+    </div>
+
+    <div class="sys">
+      <div class="sys-cell">
+        <label>舰内时<em>SHIP TIME</em></label>
+        <div class="clock" id="clock">00:00:00</div>
+      </div>
+      <div class="sys-cell">
+        <label>航历<em>CYCLE</em></label>
+        <div class="clock">0412<small>D</small></div>
+      </div>
+      <div class="sys-cell">
+        <label>链路<em>UPLINK</em></label>
+        <div class="bars"><i></i><i></i><i></i><i></i><i class="off"></i></div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="menu" id="menu">
+    <div class="menu-h"><b>导航</b><em>NAVIGATION</em><i></i><span>04</span></div>
+    <div class="menu-list" id="menuList"></div>
+    <div class="menu-f">
+      <div class="menu-desc" id="menuDesc"></div>
+      <div class="menu-code"><i class="barcode"></i><span>XP07-BRG-TERM-A</span></div>
+    </div>
+  </nav>
+
+  <aside class="panel" id="panel"></aside>
+
+  <div class="flash" id="flash">
+    <div class="flash-idx" id="flashIdx">01</div>
+    <div class="flash-t"><b id="flashCn">舰桥总览</b><em id="flashEn">BRIDGE OVERVIEW</em></div>
+    <i class="flash-line"></i>
+  </div>
+
+  <div class="tags" id="tags"></div>
+
+  <footer class="bot">
+    <div class="tele" id="tele"></div>
+    <div class="ticker">
+      <span class="ticker-k">舰内广播<em>PA</em></span>
+      <div class="ticker-w"><div class="ticker-t" id="ticker"></div></div>
+    </div>
+    <div class="keys">
+      <span><kbd>1</kbd><kbd>4</kbd>切换视角</span>
+      <span><kbd>H</kbd>影像模式</span>
+      <button id="qBtn" type="button"><kbd>Q</kbd>画质 <b id="qVal">高</b></button>
+      <span class="fps"><b id="fps">60</b> FPS</span>
+    </div>
+  </footer>
+</div>
+
+<div class="cine-hint" id="cineHint"><kbd>H</kbd>恢复界面</div>
+
+<div id="boot">
+  <div class="boot-grid"></div>
+  <div class="boot-in">
+    <div class="boot-mark">
+      <svg viewBox="-50 -50 100 100" aria-hidden="true">
+        <circle r="41" fill="none" stroke="currentColor" stroke-width="8.5" stroke-dasharray="72.77 13.1" transform="rotate(-80.8)"/>
+        <rect x="-4.5" y="-25" width="9" height="50" fill="currentColor" transform="rotate(-45)"/>
+        <circle cx="18" cy="-18" r="6.5" class="mark-dot"/>
+      </svg>
+    </div>
+    <div class="boot-name"><b>XUANPU-07</b><span>玄圃号 · 舰桥终端</span></div>
+    <div class="boot-row">
+      <div class="boot-pct"><span id="bootPct">000</span><small>%</small></div>
+      <div class="boot-log" id="bootLog"></div>
+    </div>
+    <div class="boot-bar"><i id="bootBar"></i></div>
+  </div>
+  <div class="boot-foot"><span>FARSHORE SURVEY BUREAU</span><span>BRIDGE TERMINAL OS 4.2</span><span>DECK 03 / SEC-B</span></div>
+</div>
+
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
